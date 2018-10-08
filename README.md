@@ -1,5 +1,14 @@
 # Algo VPN
 
+**This is a fork that contains my own personal preferences.**
+
+Changes made:
+
+* Wireguard runs on port 443 to help circumvent restrictive firewalls
+* VPN clients are allowed to talk to each other
+* Unattended reboots happen at 1 AM UTC
+* Discarded Python's virtualenv - I'm running Algo in a Vagrant virtual machine, so virtualenv adds extra steps I don't need.
+
 [![Join the chat at https://gitter.im/trailofbits/algo](https://badges.gitter.im/trailofbits/algo.svg)](https://gitter.im/trailofbits/algo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40AlgoVPN)](https://twitter.com/AlgoVPN)
 [![TravisCI Status](https://api.travis-ci.org/trailofbits/algo.svg?branch=master)](https://travis-ci.org/trailofbits/algo)
