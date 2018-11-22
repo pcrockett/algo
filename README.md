@@ -23,7 +23,7 @@ Algo VPN is a set of Ansible scripts that simplify the setup of a personal IPSEC
 * Blocks ads with a local DNS resolver (optional)
 * Sets up limited SSH users for tunneling traffic (optional)
 * Based on current versions of Ubuntu and strongSwan
-* Installs to DigitalOcean, Amazon EC2, Vultr, Microsoft Azure, Google Compute Engine, Scaleway, OpenStack or your own Ubuntu 18.04 LTS server
+* Installs to DigitalOcean, Amazon Lightsail, Amazon EC2, Vultr, Microsoft Azure, Google Compute Engine, Scaleway, OpenStack or your own Ubuntu 18.04 LTS server
 
 ## Anti-features
 
@@ -138,10 +138,12 @@ One common use case is to let your server access your local LAN without going th
 
     conn lan-passthrough
     leftsubnet=192.168.1.1/24 # Replace with your LAN subnet
-    rightsubnet=192.168.1.1/24 # Replac with your LAND subnet
+    rightsubnet=192.168.1.1/24 # Replace with your LAN subnet
     authby=never # No authentication necessary
     type=pass # passthrough
     auto=route # no need to ipsec up lan-passthrough
+
+To configure the connection to come up at boot time replace `auto=add` with `auto=start`.
 
 ### Other Devices
 
@@ -201,6 +203,7 @@ After this process completes, the Algo VPN server will contains only the users l
   - Configure [Amazon EC2](docs/cloud-amazon-ec2.md)
   - Configure [Azure](docs/cloud-azure.md)
   - Configure [DigitalOcean](docs/cloud-do.md)
+  - Configure [Google Cloud Platform](docs/cloud-gce.md)
 * Advanced Deployment
   - Deploy to your own [FreeBSD](docs/deploy-to-freebsd.md) server
   - Deploy to your own [Ubuntu 18.04](docs/deploy-to-ubuntu.md) server

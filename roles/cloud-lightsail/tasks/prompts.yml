@@ -27,9 +27,10 @@
     lightsail_region_facts:
       aws_access_key: "{{ access_key }}"
       aws_secret_key: "{{ secret_key }}"
+      region: us-east-1
     register: _lightsail_regions
 
-  - name: Set facts about thre regions
+  - name: Set facts about the regions
     set_fact:
       lightsail_regions: "{{ _lightsail_regions.results.regions | sort(attribute='name') }}"
 
@@ -37,7 +38,7 @@
     set_fact:
       default_region: >-
         {% for r in lightsail_regions %}
-        {%- if r['name'] == "eu-west-1" %}{{ loop.index }}{% endif %}
+        {%- if r['name'] == "us-east-1" %}{{ loop.index }}{% endif %}
         {%- endfor %}
 
   - pause:
@@ -45,7 +46,7 @@
         What region should the server be located in?
         (https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)
           {% for r in lightsail_regions %}
-          {{ loop.index }}. {{ r['name'] }}       {{ r['displayName'] }}
+          {{ (loop.index|string + '.').ljust(3) }} {{ r['name'].ljust(20) }} {{ r['displayName'] }}
           {% endfor %}
 
         Enter the number of your desired region
